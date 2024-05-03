@@ -1,0 +1,231 @@
+#Primitive Data Types:
+
+    Primitive data types are the most basic data types in Java.
+    They are predefined by the language and are not objects created from classes.
+    Primitive data types hold their values directly in memory.
+    There are eight primitive data types in Java:
+        byte: 8-bit signed integer (-128 to 127)
+        short: 16-bit signed integer (-32,768 to 32,767)
+        int: 32-bit signed integer (-2^31 to 2^31 - 1)
+        long: 64-bit signed integer (-2^63 to 2^63 - 1)
+        float: 32-bit floating point (single precision)
+        double: 64-bit floating point (double precision)
+        char: 16-bit Unicode character (0 to 65,535)
+        boolean: Represents true or false
+#Reference (Non-Primitive) Data Types:
+
+    Reference data types are created using predefined classes or user-defined classes.
+    They are not predefined by the language and are typically used to store complex objects.
+    Reference data types hold references (memory addresses) to objects stored elsewhere in memory.
+    Examples of reference data types include arrays, classes, interfaces, and strings.
+
+    #public:
+        The public access modifier allows a class, method, or member variable to be accessed by any other class.
+        Example: public class MyClass {}
+
+    #protected:
+        The protected access modifier allows a class, method, or member variable to be accessed by classes within the same package or by subclasses (even if they are in different packages).
+        Example: protected void myMethod() {}
+
+    #default (package-private):
+        If no access modifier is specified, the default access modifier is applied.
+        The default access modifier allows a class, method, or member variable to be accessed only by classes within the same package.
+        Example: class MyClass {} (no access modifier specified)
+
+    #private:
+        The private access modifier restricts access to the class, method, or member variable to only within the same class.
+        Example: private int myVar;
+
+  #Static Members:
+
+    static members are shared among all instances of the class.
+    They are initialized only once, at the start of the program execution.
+    They can be accessed using the class name, without the need to create an instance of the class.
+    Common uses of static members include constants, utility methods, and counters.
+
+public class MyClass {
+    public static int myStaticVar = 10;
+
+    public static void myStaticMethod() {
+        System.out.println("Static method");
+    }
+}
+
+// Accessing static members
+int value = MyClass.myStaticVar;
+MyClass.myStaticMethod();
+
+
+Use non-static for members that are unique to each instance of the class and require instance-specific data.
+
+     public class MyClass {
+    public int myVar = 20;
+
+    public void myMethod() {
+        System.out.println("Non-static method");
+    }
+}
+
+// Creating an instance of MyClass
+MyClass obj = new MyClass();
+int value = obj.myVar;
+obj.myMethod();
+
+#wrapper class 
+wrapper class is a class that provides an object representation for primitive data types. 
+
+# varargs (variable-length arguments)
+varargs (variable-length arguments) is a feature that allows a method to accept a variable number of arguments.
+
+public class Main {
+    public static void main(String[] args) {
+        System.out.println(sum(1, 2, 3, 4, 5));
+        System.out.println(sum(10, 20));
+    }
+
+    public static int sum(int... numbers) {
+        int sum = 0;
+        for (int number : numbers) {
+            sum += number;
+        }
+        return sum;
+    }
+}
+#Enums 
+enumeration (enum) is a special datatype that is used to define a set of constants. 
+Enums are used to create a collection of related constants, which makes the code more readable and maintainable. 
+Enums can have constructors, methods, and instance variables, similar to regular classes.
+
+public enum Day {
+    SUNDAY, MONDAY, TUESDAY, WEDNESDAY, THURSDAY, FRIDAY, SATURDAY
+}
+
+#Class:
+
+    A class is a blueprint or template for creating objects.
+    It defines the properties (attributes) and behaviors (methods) that all objects of the class will have.
+    Classes are used to create objects that represent real-world entities or concepts.
+
+#Object
+An object is an instance of a class.
+It represents a specific instance of the class, with its own unique set of values for the attributes.
+Objects are created using the new keyword followed by a call to the class constructor.
+
+#Method overloading 
+Method overloading is a feature in Java that allows a class to have multiple methods with the same name but different parameters.
+These methods can have different numbers of parameters or different types of parameters. 
+
+public class Calculator {
+    public int add(int a, int b) {
+        return a + b;
+    }
+
+    public double add(double a, double b) {
+        return a + b;
+    }
+
+    public int add(int a, int b, int c) {
+        return a + b + c;
+    }
+
+    public static void main(String[] args) {
+        Calculator calculator = new Calculator();
+        System.out.println(calculator.add(1, 2));           // Calls the first add method
+        System.out.println(calculator.add(1.5, 2.5));       // Calls the second add method
+        System.out.println(calculator.add(1, 2, 3));        // Calls the third add method
+    }
+}
+
+#This
+
+this keyword is a reference to the current object within an instance method or a constructor.
+It can be used to refer to the current instance variable, invoke another constructor of the same class, 
+or pass the current object as a parameter to other methods.
+
+#Initializer blocks 
+
+Initializer blocks in Java are used to initialize instance variables of a class.
+There are two types of initializer blocks: instance initializer blocks and static initializer blocks.
+
+#instance initializer blocks
+
+public class MyClass {
+    private int number;
+
+    // Instance initializer block
+    {
+        System.out.println("Instance initializer block");
+        number = 10;
+    }
+
+    public MyClass() {
+        System.out.println("Constructor");
+    }
+
+    public static void main(String[] args) {
+        MyClass obj = new MyClass();
+    }
+}
+**********************************************************************************
+#Static initializer block
+
+public class MyClass {
+    private static int number;
+
+    // Static initializer block
+    static {
+        System.out.println("Static initializer block");
+        number = 20;
+    }
+
+    public static void main(String[] args) {
+        System.out.println("Number: " + number);
+    }
+}
+
+#StringBuilder 
+
+StringBuilder is a class in Java that is used to create mutable (modifiable) sequences of characters.
+It is similar to the String class, but unlike String, objects of StringBuilder can be modified after they are created.
+
+#Inheritance 
+is a key concept in object-oriented programming (OOP) that allows a class (subclass or derived class)
+to inherit attributes and methods from another class (superclass or base class). 
+This enables you to create a hierarchy of classes with shared characteristics and behaviors, making it easier to manage and reuse code.
+
+In Java, inheritance is implemented using the extends keyword. When a class extends another class, 
+it inherits all non-private attributes and methods from the superclass. The subclass can then add its own attributes and methods,
+or override the inherited methods to provide its own implementation.
+
+#overriding
+Overriding is a concept in object-oriented programming (OOP) that allows
+a subclass to provide a specific implementation of a method that is already provided by its superclass.
+When a method in the subclass has the same name, parameters, and return type as a method in its superclass,
+the subclass method overrides the superclass method.
+
+Overriding: Occurs when a subclass provides a specific implementation for a method that is already provided by its superclass,
+with the same method signature.
+Overloading: Occurs when a class has multiple methods with the same name but different parameters
+(either different types or a different number of parameters)
+
+#final
+keyword in Java is used to restrict the user. The java final keyword can be used in many contexts. like var, methods, class
+
+The instanceof operator in Java is used to test whether an object is an instance of a particular class or interface.
+
+#Abstract 
+Abstract methods are meant to be overridden by subclasses to provide a specific implementation.
+
+abstract class Animal {
+    abstract void makeSound(); // Abstract method
+}
+
+#Lambda expressions
+Lambda expressions allow you to treat functionality as a method argument, or pass code as data.
+They are particularly useful for writing code that uses functional interfaces,
+which are interfaces with a single abstract method (SAM), also known as functional interfaces.
+
+Anonymous classes in Java are a way to create an instance of a class that extends
+a superclass or implements an interface without explicitly  defining a named subclass.
+They are often used when you need to create a class that is used only once and does not need to be reused elsewhere in your code.
+
